@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 class QuickSort<T> {
   boolean compareMethod(T value, T pivot) throws Exception {
@@ -62,10 +59,11 @@ class QuickSort<T> {
   }
 }
 
-public class Asg2Question6 {
-  
+public class QuestionSix {
+
   static class getArray {
     static String dataStr = "";
+
     static String[] fromTxt(String filename) {
       try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
         for (String line; (line = br.readLine()) != null;) {
@@ -83,8 +81,17 @@ public class Asg2Question6 {
   static void printArray(String[] arr) {
     int n = arr.length;
     for (int i = 0; i < n; ++i)
-      System.out.print(arr[i] + "\n");
+      System.out.print(arr[i] + " ");
     System.out.println();
+  }
+
+  static void write(String filename, String[] dataArr) throws IOException {
+    FileWriter fw = new FileWriter("sortedList.txt");
+
+    for (int i = 0; i < dataArr.length; i++) {
+      fw.write(dataArr[i] + "\n");
+    }
+    fw.close();
   }
 
   public static void main(String[] args) {
@@ -96,5 +103,11 @@ public class Asg2Question6 {
 
     System.out.println("sorted string array: ");
     printArray(dataArr);
+
+    try {
+      write("./sortedResult.txt", dataArr);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
