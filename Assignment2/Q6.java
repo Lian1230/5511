@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class QuestionSix {
+public class Q6 {
 
     // some color to make the console look better
     static final String ANSI_RESET = "\u001B[0m";
@@ -9,7 +9,6 @@ public class QuestionSix {
 
     static String[] sortedQs;
     static String[] sortedSs;
-
 
     /* method to compare two strings, if true, means the first string should be
     sorted before the second one (in A-Z order) */
@@ -25,14 +24,14 @@ public class QuestionSix {
             // One by one move boundary of unsorted sub array
             for (int i = 0; i < len - 1; i++) {
                 // Find the minimum element in unsorted array
-                int min_index = i;
+                int minIndex = i;
                 for (int j = i + 1; j < len; j++)
-                    if (compareMethod(arr[j], arr[min_index]))
-                        min_index = j;
+                    if (compareMethod(arr[j], arr[minIndex]))
+                        minIndex = j;
 
                 // Swap the found minimum element with the first element
-                String temp = arr[min_index];
-                arr[min_index] = arr[i];
+                String temp = arr[minIndex];
+                arr[minIndex] = arr[i];
                 arr[i] = temp;
             }
             sortedSs = arr;
@@ -116,19 +115,6 @@ public class QuestionSix {
         System.out.println();
     }
 
-    static void printResult(long[] result1, long[] result2) {
-        long sum1 = 0;
-        long sum2 = 0;
-        System.out.print(ANSI_CYAN + "time\tQuickSort\tSelectionSort\n" + ANSI_RESET);
-        int n = result1.length;
-        for (int i = 0; i < n; ++i) {
-            sum1 += result1[i];
-            sum2 += result2[i];
-            System.out.print((i + 1) + "\t\t" + result1[i] + "ms" + "\t\t\t" + result2[i] + "ms" + "\n");
-        }
-        System.out.println(ANSI_CYAN + "average\t" + (sum1 / n) + "ms\t\t" + (sum2 / n) + "ms" + ANSI_RESET);
-    }
-
     // method to write the given string array into txt file at give location
     static void write(String filename, String[] dataArr) throws IOException {
         FileWriter fw = new FileWriter(filename);
@@ -144,7 +130,6 @@ public class QuestionSix {
 
         QuickSort qs = new QuickSort();
         SelectionSort ss = new SelectionSort();
-
 
         try {
             Thread.sleep(1000);
