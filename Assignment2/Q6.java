@@ -131,21 +131,15 @@ public class Q6 {
         QuickSort qs = new QuickSort();
         SelectionSort ss = new SelectionSort();
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // log the starting time:
         long startTimeQs = System.currentTimeMillis();
         qs.sort(dataArr.clone());
+        // log the ending time:
         long endTimeQs = System.currentTimeMillis();
+        // calculate the running time:
         long elaspedQs = endTimeQs - startTimeQs;
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // same for selection sort:
         long startTimeSs = System.currentTimeMillis();
         ss.sort(dataArr.clone());
         long endTimeSs = System.currentTimeMillis();
@@ -161,6 +155,7 @@ public class Q6 {
         System.out.println(ANSI_CYAN + "Selectionsort running time: " + elaspedSs + "ms" + ANSI_RESET);
 
 
+        // write the sorted result into external files:
         try {
             write("./sorted_result_quicksort.txt", sortedQs);
             write("./sorted_result_selectionsort.txt", sortedSs);
