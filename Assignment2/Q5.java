@@ -31,9 +31,9 @@ class Node {
 
 /* Class singlyLinkedList */
 class singlyLinkedList {
-  protected Node start;
-  protected Node end;
-  public int size;
+  protected Node start; // the first Node
+  protected Node end; // the last Node 
+  public int size; // the number of Node in the list
 
   /*  Constructor  */
   public singlyLinkedList() {
@@ -47,7 +47,12 @@ class singlyLinkedList {
     return start == null;
   }
 
-  /* Function to count the size */
+   /* the first way to get size -- just render the size, since size get increase at inserting action.*/
+   public int getSize() {
+    return size;
+  }
+
+  /* Second way to get size -- loop the list*/
   public int countSize() {
     if (start == null)
       return 0;
@@ -61,11 +66,6 @@ class singlyLinkedList {
       return count;
     count++;
     return recursiveCount(nextNode, count);
-  }
-
-  /*  Function to get size of list  */
-  public int getSize() {
-    return size;
   }
 
   /*  Function to insert an element at begining  */
@@ -105,16 +105,25 @@ class singlyLinkedList {
       System.out.println(start.getData());
       return;
     }
-    Node ptr;
+    Node nextNode;
     System.out.print(start.getData() + " -> ");
-    ptr = start.getLink();
-    while (ptr.getLink() != null) {
-      System.out.print(ptr.getData() + " -> ");
-      ptr = ptr.getLink();
+    nextNode = start.getLink();
+    while (nextNode.getLink() != null) {
+      System.out.print(nextNode.getData() + " -> ");
+      nextNode = nextNode.getLink();
     }
-    System.out.print(ptr.getData() + "\n");
+    System.out.print(nextNode.getData() + "\n");
   }
 
+  // Main method to reverse the link, entrance to the following recursive method 
+  public void reverseList() {
+    if (start != null) {
+      end = start;
+      Node nextNode = start.getLink();
+      recursiveReverseList(null, start, nextNode);
+    }
+  }
+  // recursively check every Node in the list
   private void recursiveReverseList(Node previousNode, Node currentNode, Node nextNode) {
     currentNode.setLink(previousNode);
     if (nextNode == null)
@@ -122,14 +131,6 @@ class singlyLinkedList {
     else {
       Node nextnextNode = nextNode.getLink();
       recursiveReverseList(currentNode, nextNode, nextnextNode);
-    }
-  }
-
-  public void reverseList() {
-    if (start != null) {
-      end = start;
-      Node nextNode = start.getLink();
-      recursiveReverseList(null, start, nextNode);
     }
   }
 }
