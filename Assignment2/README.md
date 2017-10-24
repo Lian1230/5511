@@ -3,7 +3,7 @@ BASIC INFO:
  Section: DD
  Group: 18
  Instruction: Bipin C. Desai
- Assignment: 1
+ Assignment: 2
  Members:
   Longfeng LIAN       40040689    lo_lian@encs.concordia.ca
   Mohamed	RASHED      40038347    m_ashed@encs.concordia.ca
