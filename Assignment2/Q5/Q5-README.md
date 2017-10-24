@@ -12,6 +12,6 @@ Methods and Classes:
   Class singlyLinkedList: the class to contruct a singly linked list
   Method generateAscendingList: Generate a random ascending singly linked list.
   Main: Implemention of the reversion
-Files relatived:
+Files related:
   Q5.java                   --- the java file with all codes
   Q5-experiments.pdf        --- the console result of 10 times of experiments

@@ -202,12 +202,7 @@ public class Q4{
 	}
 	
 	
-	
-	
-	
-	
 
-	
 	
 	public static void main(String[] Args){
 		
@@ -258,12 +253,11 @@ public class Q4{
 	
 }
 
-
+/*
 OUTPUT: 
-
 
 Size: 19
 [ 4  2  7  10  2  4  9  7  10  2  4  4  9  7  10  5  4  9  7   ]
 Iterative call count: 19
 Recursive call count: 19
-
+*/
