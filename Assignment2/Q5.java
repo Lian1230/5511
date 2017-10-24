@@ -3,12 +3,6 @@ class Node {
   protected Node link;
 
   /*  Constructor  */
-  public Node() {
-    data = 0;
-    link = null;
-  }
-
-  /*  Constructor  */
   public Node(int d, Node n) {
     data = d;
     link = n;
@@ -36,13 +30,13 @@ class Node {
 }
 
 /* Class singlyLinkedList */
-class linkedList {
+class singlyLinkedList {
   protected Node start;
   protected Node end;
   public int size;
 
   /*  Constructor  */
-  public linkedList() {
+  public singlyLinkedList() {
     start = null;
     end = null;
     size = 0;
@@ -67,7 +61,7 @@ class linkedList {
       return count;
     count++;
     return recursiveCount(nextNode, count);
-  };
+  }
 
   /*  Function to get size of list  */
   public int getSize() {
@@ -76,33 +70,33 @@ class linkedList {
 
   /*  Function to insert an element at begining  */
   public void insertAtStart(int val) {
-    Node nptr = new Node(val, null);
+    Node newNode = new Node(val, null);
     size++;
     if (start == null) {
-      start = nptr;
+      start = newNode;
       end = start;
     } else {
-      nptr.setLink(start);
-      start = nptr;
+      newNode.setLink(start);
+      start = newNode;
     }
   }
 
   /*  Function to insert an element at end  */
   public void insertAtEnd(int val) {
-    Node nptr = new Node(val, null);
+    Node newNode = new Node(val, null);
     size++;
     if (start == null) {
-      start = nptr;
+      start = newNode;
       end = start;
     } else {
-      end.setLink(nptr);
-      end = nptr;
+      end.setLink(newNode);
+      end = newNode;
     }
   }
 
   /*  Function to print elements  */
-  public void display() {
-    System.out.print("\nSingly Linked List: ");
+  public void print() {
+    System.out.print("Singly Linked List: ");
     if (size == 0) {
       System.out.print("empty\n");
       return;
@@ -111,51 +105,52 @@ class linkedList {
       System.out.println(start.getData());
       return;
     }
-    Node ptr = start;
-    System.out.print(start.getData() + "->");
+    Node ptr;
+    System.out.print(start.getData() + " -> ");
     ptr = start.getLink();
     while (ptr.getLink() != null) {
-      System.out.print(ptr.getData() + "->");
+      System.out.print(ptr.getData() + " -> ");
       ptr = ptr.getLink();
     }
     System.out.print(ptr.getData() + "\n");
   }
 
   private void recursiveReverseList(Node previousNode, Node currentNode, Node nextNode) {
-    if(nexNode == null) start = currentNode;
+    currentNode.setLink(previousNode);
+    if (nextNode == null)
+      start = currentNode;
     else {
-      currentNode.setLink(previousNode);
       Node nextnextNode = nextNode.getLink();
-      recursiveReverseList(currentNode, nextnextNode, nextnextNode);
+      recursiveReverseList(currentNode, nextNode, nextnextNode);
     }
   }
 
-  public void reverseList(){
-    if(start != null) {
+  public void reverseList() {
+    if (start != null) {
       end = start;
-      nextNode = start.getLink();
-      previousNode = null;
+      Node nextNode = start.getLink();
       recursiveReverseList(null, start, nextNode);
     }
   }
 }
 
-public class SinglyLinkedList {
-
-  // generate a singly linked list filled with number of 1-10;
-  static linkedList generateList(int size) {
-    linkedList list = new linkedList();
+public class Q5 {
+  // generate a ascending singly linked list filled with number of 1-10;
+  static singlyLinkedList generateAscendingList(int size) {
+    singlyLinkedList list = new singlyLinkedList();
+    int largestNum = 0;
     for (int i = 0; i < size; i++) {
-      list.insertAtEnd((int) (Math.random() * 10 + 1));
+      largestNum += Math.random() * 10 + 1;
+      list.insertAtEnd(largestNum);
     }
     return list;
   }
 
   public static void main(String[] args) {
-    linkedList list = generateList(1);
-    list.display();
-    System.out.println("\nThe size of the list is: " + list.countSize());
+    singlyLinkedList list = generateAscendingList(10);
+    list.print();
     list.reverseList();
-    list.display();    
+    System.out.print("\nReversed ");
+    list.print();
   }
 }
